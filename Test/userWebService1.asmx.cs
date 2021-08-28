@@ -32,13 +32,15 @@ namespace Test
                 SqlCommand cmd = new SqlCommand("getUserByTID", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter parameter = new SqlParameter();
-                parameter.ParameterName = "@CellNumber";
-                parameter.ParameterName = "@TID";
-                parameter.Value = id;
-                parameter.Value = tid;
+                //SqlParameter parameter = new SqlParameter();
+                //SqlParameter parameter1 = new SqlParameter();
+                //parameter.ParameterName = "@CellNumber";
+                //parameter1.ParameterName = "@TID";
+                //parameter.Value = id;
+                //parameter1.Value = tid;
 
-                cmd.Parameters.Add(parameter);
+                cmd.Parameters.Add(new SqlParameter("@CellNumber",id));
+                cmd.Parameters.Add(new SqlParameter("@TID", tid));
 
                 con.Open();
 

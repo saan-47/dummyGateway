@@ -15,9 +15,12 @@
     $(document).ready(function () {
         $("#search").click(function () {
             var userid = $("#transid").val();
+            var Tid = $("#cellid").val();
             $.ajax({
                 url: 'userWebService1.asmx/GetAllUsers',
-                data: { id : userid },
+                data: {
+                    id: userid, tid: Tid
+                },
                 method: 'post',
                 dataType: 'xml',
                 success: function (data) {
@@ -125,8 +128,10 @@
                     <td><input type="text" id="cnic" /></td>
                 </tr>
             </table>
-           <h1 id="h">hello brother</h1>
        </div>
+        <div>
+            <h4>Note:</h4><p>The transaction id will be auto generated, to retrieve data you can copy it from the Table.</p>
+        </div>
 
     </form>
         
