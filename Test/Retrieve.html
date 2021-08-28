@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Retrieve Data</title>
+    <script src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#search").click(function () {
+                var userid = $("#texID").val();
+                $.ajax({
+                    url: 'userWebService1.asmx/GetAllUsers',
+                    data: { id : userid },
+                    method: 'post',
+                    dataType: 'xml',
+                    success: function (data) {
+                        var jXml = $(data);
+                        $("#accNum").val(jXml.find('Date').text());
+                        $("#bName").val(jXml.find('BankName').text());
+                        $("#LDate").val(jXml.find('AccountNumber').text());
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                })
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        <input type="text" id="texID" placeholder="Enter TransactionID" />
+        <input type="button" id="search" value="Search" />
+        <br />
+        <br />
+        <table class="table">
+            <tr>
+                <td>Account Number</td>
+                <td><input type="text" id="accNum" /></td>
+            </tr>
+            <tr>
+                <td>Bank Name</td>
+                <td><input type="text" id="bName" /></td>
+            </tr>
+            <tr>
+                <td>Login Date</td>
+                <td><input type="text" id="LDate" /></td>
+            </tr>
+        </table>
+        <h1 id="h">hello brother</h1>
+    </div>
+
+</body>
+</html>

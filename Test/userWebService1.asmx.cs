@@ -21,11 +21,11 @@ namespace Test
     {
 
         [WebMethod]
-        public RetrieveData getUsers(int id)
+        public RetrieveData GetAllUsers(string id)
         {
             RetrieveData user = new RetrieveData();
             
-            List<User> users = new List<User>();
+            //List<User> users = new List<User>();
             string cs = ConfigurationManager.ConnectionStrings["Database1ConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(cs))
             {
@@ -33,8 +33,10 @@ namespace Test
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter parameter = new SqlParameter();
-                parameter.ParameterName = "@Id";
+                parameter.ParameterName = "@CellNumber";
+                //parameter.ParameterName = "@TID";
                 parameter.Value = id;
+                //parameter.Value = tid;
 
                 cmd.Parameters.Add(parameter);
 
@@ -43,7 +45,7 @@ namespace Test
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {                    
-                    user.Id = Convert.ToInt32(rdr["Id"]);
+                    //user.Id = Convert.ToInt32(rdr["Id"]);
                     user.AccountNumber = rdr["AccountNumber"].ToString();
                     user.BankName = rdr["BankName"].ToString();
                     user.Amount = rdr["Amount"].ToString();

@@ -10,14 +10,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="jquery-3.6.0.js"></script>  
-  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>  
-<script>
+  <script src="jquery-3.6.0.min.js"></script>  
+<script type="text/javascript">
     $(document).ready(function () {
         $("#search").click(function () {
             var userid = $("#transid").val();
             $.ajax({
-                url: 'userWebService1.asmx/getUsers',
-                data: { id = userid },
+                url: 'userWebService1.asmx/GetAllUsers',
+                data: { id : userid },
                 method: 'post',
                 dataType: 'xml',
                 success: function (data) {
@@ -25,6 +25,9 @@
                     $("#LDate").val(jXml.find('Date').text());
                     $("#bName").val(jXml.find('BankName').text());
                     $("#accNum").val(jXml.find('AccountNumber').text());
+                    $("#amount").val(jXml.find('Amount').text());
+                    $("#cnic").val(jXml.find('CNIC').text());
+                    
                 },
                 error: function (err) {
                     alert(err);
@@ -129,7 +132,6 @@
         </Columns>
     </asp:GridView>
         <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
-    </form>
         <div class="jumbotron">
         <h1>Search Entry AJAX</h1>
     </div>
@@ -152,9 +154,19 @@
                     <td>Login Date</td>
                     <td><input type="text" id="LDate" /></td>
                 </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td><input type="text" id="amount" /></td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td><input type="text" id="cnic" /></td>
+                </tr>
             </table>
            <h1 id="h">hello brother</h1>
        </div>
 
+    </form>
+        
 </body>
 </html>

@@ -76,6 +76,7 @@
     <Content Include="DpaymentGateway.aspx" />
     <Content Include="jquery-3.6.0.js" />
     <Content Include="jquery-3.6.0.min.js" />
+    <Content Include="Retrieve.html" />
     <Content Include="userWebService1.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
