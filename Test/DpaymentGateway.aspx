@@ -10,29 +10,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="jquery-3.6.0.js"></script>  
-  <script src="jquery-3.6.0.min.js"></script>  
-  <script src="~/scripts/jquery.dataTables.min.js"></script>  
-    <script type="text/javascript">
-        function loaddatabase() {
-            //var http = new XMLHttpRequest();
-            //http.onreadystatechange = function () {
-            //    //readystate == 4 means request finished response is ready
-            //    if (this.readyState == 4 && this.status == 200) {
-            //        document.getElementById("qwe").innerHTML = this.responseText;
-            //    }
-            //};
-            //http.open("GET", "DpaymentGateway/", true);
-            //http.send();
-            $(document).ready(function () {
-                $("button").click(function () {
-                    $.ajax({
-                        url: "demo_test.txt", success: function (result) {
-                            $("#qwe").html(result);
-                        }
-                    });
-                });
-            });
-    </script>
+  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>  
+  
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -88,6 +68,7 @@
             </div>
         </div>
         <br />
+    </form>
     <div class="jumbotron">
         <h1>Search Entry</h1>
     </div>
@@ -102,7 +83,7 @@
             
         </div>
         <div class="col-3">
-            <input type="text" placeholder="Enter TransactionID" />
+            <input type="text" id="transid" placeholder="Enter TransactionID" />
             <br />
             <input type="text" placeholder="Enter Mobile number" />
             <%--<asp:TextBox ID="TextBox7" runat="server" placeholder="transID"></asp:TextBox>
@@ -110,7 +91,7 @@
             <asp:TextBox ID="TextBox8" runat="server" placeholder="Mobile Number"></asp:TextBox>--%>
         </div>
         <div class="col-12">
-            <button type="button" onclick="loaddatabase()">Show data</button>
+            <input id="bt" type="button" value="Show"/>
             <%--<asp:Button ID="Button2" runat="server" Text="Submit" OnClick="Button2_Click" />--%>
         </div>
         
@@ -126,24 +107,61 @@
             </div>
             <div class="row" id="demo">
                 <div class="col-2 i1" id="qwe">
-                    <asp:Label ID="Label12" runat="server" Text="Label"></asp:Label>
+                    <h4 id="sheep">info</h4>
                 </div>
                 <div class="col-2 i2">
-                    <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
+                    <h4>info</h4>
                 </div>
                 <div class="col-2 i3">
-                    <asp:Label ID="Label14" runat="server" Text="Label"></asp:Label>
+                    <h4>info</h4>                    
                 </div>
                 <div class="col-2 i4">
-                    <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
+                    <h4>info</h4>                    
                 </div>
                 <div class="col-2 i5">
-                    <asp:Label ID="Label16" runat="server" Text="Label"></asp:Label>
+                    <h4>info</h4>                    
                 </div>
                 <div class="col-2 i6"></div>
             </div>
-        </div>
-    </form>
-    
+        </div><div class="container py-4">  
+        <h4 class="text-center text-uppercase">HOW TO RETRIEVE DATA FROM DATABASE USING JQUERY AJAX IN MVC5</h4>  
+        <div id="dataTable_wrapper"></div>  
+        <table id="employee" class="table table-bordered table-striped">  
+            <thead>  
+                <tr>  
+                    <th>Name</th>  
+                    <th>Position</th>  
+                    <th>Office</th>  
+                    <th>Age</th>  
+                    <th>Salary</th>  
+                </tr>  
+            </thead>  
+        </table>  
+    </div>   
+<script>
+    function getAllEmployees() {
+        $.ajax({
+            url: 'userWebService1.asmx/getUsers',
+            dataType: "json",
+            method: 'GET',
+            success: function (data) {
+                var employeeTable = $('#employee tbody');
+                employeeTable.empty();
+
+                $(data).each(function (index, emp) {
+                    employeeTable.append('<tr><td>' + emp.ID + '</td><td>'
+                        + emp.Name + '</td><td>' + emp.Gender + '</td><td>'
+                        + emp.Phone + '</td><td>' + emp.Email + '</td><td>'
+                        + emp.Age + '</td><td>' + emp.Salary + '</td></tr>');
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }  
+});
+
+</script>
 </body>
 </html>

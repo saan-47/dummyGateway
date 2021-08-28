@@ -58,7 +58,11 @@ namespace Test
 
         public string getSecuredData(string mobilenumber, string transID)
         {
-            string a = "There you go!";
+            string a = " ";
+            using(DataClasses1DataContext db = new DataClasses1DataContext())
+            {
+                
+            }
             return a;
         }
 
