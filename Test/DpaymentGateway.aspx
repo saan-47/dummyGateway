@@ -92,52 +92,14 @@
             </div>
         </div>
         <br />
-         <div class="jumbotron">
-        <h1>Search Entry</h1>
-    </div>
-    <div class="container row">
-        <div class="col-6">
-            <p>Enter TransactionID</p>
-            <br />
-            <p>Enter Mobile Number</p>
-            <%--<asp:Label ID="Label10" runat="server" Text="TransactionID"></asp:Label>
-            <br />
-            <asp:Label ID="Label11" runat="server" Text="Call Number"></asp:Label>--%>
-            
-        </div>
-        <div class="col-3">
-            
-            <asp:TextBox ID="TextBox7" runat="server" placeholder="transID"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="TextBox8" runat="server" placeholder="Mobile Number"></asp:TextBox>
-        </div>
-        <div class="col-12">
-            <input id="bt" type="button" value="Show"/>
-            <%--<asp:Button ID="Button2" runat="server" Text="Submit" OnClick="Button2_Click" />--%>
-        </div>
-    </div>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="1001px">
-        <Columns>
-            <asp:BoundField DataField="Id" HeaderText="ID">
-            <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="AccountNumber" HeaderText="Acc Number" />
-            <asp:BoundField DataField="BankName" HeaderText="Bank Name" />
-            <asp:BoundField DataField="Amount" HeaderText="Amount" />
-            <asp:BoundField DataField="Email" HeaderText="Email" />
-            <asp:BoundField DataField="CellNumber" HeaderText="Cell Number" />
-            <asp:BoundField DataField="Date" HeaderText="Login Date" />
-            <asp:BoundField DataField="CNIC" HeaderText="CNIC" />
-            <asp:BoundField DataField="TransactionID" HeaderText="TransactionID" />
-        </Columns>
-    </asp:GridView>
-        <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
         <div class="jumbotron">
         <h1>Search Entry AJAX</h1>
-    </div>
-    
-       <div>
-           <input type="text" id="transid" placeholder="Enter TransactionID" />
+        </div>
+       
+        <div class="contaner col-8">
+           <input type="text" id="cellid" placeholder="TransactionID" />
+           
+           <input type="text" id="transid" placeholder="Cell number" />
            <input type="button" id="search" value="Search" /> 
            <br />
            <br />
@@ -159,7 +121,7 @@
                     <td><input type="text" id="amount" /></td>
                 </tr>
                 <tr>
-                    <td>Amount</td>
+                    <td>CNIC</td>
                     <td><input type="text" id="cnic" /></td>
                 </tr>
             </table>

@@ -21,7 +21,7 @@ namespace Test
     {
 
         [WebMethod]
-        public RetrieveData GetAllUsers(string id)
+        public RetrieveData GetAllUsers(string id, string tid)
         {
             RetrieveData user = new RetrieveData();
             
@@ -34,9 +34,9 @@ namespace Test
 
                 SqlParameter parameter = new SqlParameter();
                 parameter.ParameterName = "@CellNumber";
-                //parameter.ParameterName = "@TID";
+                parameter.ParameterName = "@TID";
                 parameter.Value = id;
-                //parameter.Value = tid;
+                parameter.Value = tid;
 
                 cmd.Parameters.Add(parameter);
 
@@ -58,28 +58,6 @@ namespace Test
                 }
             }
             return user;
-            //JavaScriptSerializer js = new JavaScriptSerializer();
-            //Context.Response.Write(js.Serialize(users));
-
-            //DataClasses1DataContext db = new DataClasses1DataContext();
-            //var userData = from usertable in db.Users
-            //               select new
-            //var userData = from usertable in db.Users
-            //               where usertable.TransactionID == tid.Trim()
-            //               && usertable.CellNumber == num.Trim()
-            //               select new
-            //               {
-            //                   usertable.Id,
-            //                   usertable.AccountNumber,
-            //                   usertable.BankName,
-            //                   usertable.Amount,
-            //                   usertable.Email,
-            //                   usertable.CellNumber,
-            //                   usertable.Date,
-            //                   usertable.Address,
-            //                   usertable.CNIC,
-            //                   usertable.TransactionID,
-            //               };
         }
     }
 }
