@@ -56,14 +56,30 @@ namespace Test
             }
         }
 
-        public string getSecuredData(string mobilenumber, string transID)
+        public void getSecuredData(string mobilenumber, string transID)
         {
-            string a = " ";
-            using(DataClasses1DataContext db = new DataClasses1DataContext())
-            {
-                
-            }
-            return a;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            var userData = from usertable in db.Users
+                           select new
+                           {
+                               usertable.Id,
+                               usertable.AccountNumber,
+                               usertable.BankName,
+                               usertable.Amount,
+                               usertable.Email,
+                               usertable.CellNumber,
+                               usertable.Date,
+                               usertable.Address,
+                               usertable.CNIC,
+                               usertable.TransactionID,
+                           };
+            GridView1.DataSource = userData;
+            GridView1.DataBind();
         }
 
         //public bool isvalid(string tID, string Mnumber)

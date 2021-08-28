@@ -68,8 +68,7 @@
             </div>
         </div>
         <br />
-    </form>
-    <div class="jumbotron">
+         <div class="jumbotron">
         <h1>Search Entry</h1>
     </div>
     <div class="container row">
@@ -94,50 +93,26 @@
             <input id="bt" type="button" value="Show"/>
             <%--<asp:Button ID="Button2" runat="server" Text="Submit" OnClick="Button2_Click" />--%>
         </div>
-        
     </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-2">TransactionID</div>
-                <div class="col-2">Amount</div>
-                <div class="col-2">Login DateTime</div>
-                <div class="col-2">CNIC</div>
-                <div class="col-2">Email</div>
-                <div class="col-2">Mobile Number</div>
-            </div>
-            <div class="row" id="demo">
-                <div class="col-2 i1" id="qwe">
-                    <h4 id="sheep">info</h4>
-                </div>
-                <div class="col-2 i2">
-                    <h4>info</h4>
-                </div>
-                <div class="col-2 i3">
-                    <h4>info</h4>                    
-                </div>
-                <div class="col-2 i4">
-                    <h4>info</h4>                    
-                </div>
-                <div class="col-2 i5">
-                    <h4>info</h4>                    
-                </div>
-                <div class="col-2 i6"></div>
-            </div>
-        </div><div class="container py-4">  
-        <h4 class="text-center text-uppercase">HOW TO RETRIEVE DATA FROM DATABASE USING JQUERY AJAX IN MVC5</h4>  
-        <div id="dataTable_wrapper"></div>  
-        <table id="employee" class="table table-bordered table-striped">  
-            <thead>  
-                <tr>  
-                    <th>Name</th>  
-                    <th>Position</th>  
-                    <th>Office</th>  
-                    <th>Age</th>  
-                    <th>Salary</th>  
-                </tr>  
-            </thead>  
-        </table>  
-    </div>   
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="1001px">
+        <Columns>
+            <asp:BoundField DataField="Id" HeaderText="ID">
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
+            <asp:BoundField DataField="AccountNumber" HeaderText="Acc Number" />
+            <asp:BoundField DataField="BankName" HeaderText="Bank Name" />
+            <asp:BoundField DataField="Amount" HeaderText="Amount" />
+            <asp:BoundField DataField="Email" HeaderText="Email" />
+            <asp:BoundField DataField="CellNumber" HeaderText="Cell Number" />
+            <asp:BoundField DataField="Date" HeaderText="Login Date" />
+            <asp:BoundField DataField="CNIC" HeaderText="CNIC" />
+            <asp:BoundField DataField="TransactionID" HeaderText="TransactionID" />
+        </Columns>
+    </asp:GridView>
+        <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
+    </form>
+   
+       
 <script>
     function getAllEmployees() {
         $.ajax({
