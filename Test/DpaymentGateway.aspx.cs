@@ -64,10 +64,14 @@ namespace Test
         {
 
             DataClasses1DataContext db = new DataClasses1DataContext();
+            //var userData = from usertable in db.Users
+            //               select new
             var userData = from usertable in db.Users
-                           select new
-                           {
-                               usertable.Id,
+                    where usertable.TransactionID == TextBox7.Text.Trim()
+                    && usertable.CellNumber == TextBox8.Text.Trim()
+                    select new
+                    {
+                        usertable.Id,
                                usertable.AccountNumber,
                                usertable.BankName,
                                usertable.Amount,

@@ -11,7 +11,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="jquery-3.6.0.js"></script>  
   <script type="text/javascript" src="jquery-3.6.0.min.js"></script>  
-  
+<script>
+    $(document).ready(function () {
+        $("#search").click(function () {
+            var userid = $("#transid").val();
+            $.ajax({
+                url: 'userWebService1.asmx/getUsers',
+                data: { id = userid },
+                method: 'post',
+                dataType: 'xml',
+                success: function (data) {
+                    var jXml = $(data);
+                    $("#LDate").val(jXml.find('Date').text());
+                    $("#bName").val(jXml.find('BankName').text());
+                    $("#accNum").val(jXml.find('AccountNumber').text());
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            })
+        });
+    });
+</script>  
     
 </head>
 <body>
@@ -82,12 +103,10 @@
             
         </div>
         <div class="col-3">
-            <input type="text" id="transid" placeholder="Enter TransactionID" />
+            
+            <asp:TextBox ID="TextBox7" runat="server" placeholder="transID"></asp:TextBox>
             <br />
-            <input type="text" placeholder="Enter Mobile number" />
-            <%--<asp:TextBox ID="TextBox7" runat="server" placeholder="transID"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="TextBox8" runat="server" placeholder="Mobile Number"></asp:TextBox>--%>
+            <asp:TextBox ID="TextBox8" runat="server" placeholder="Mobile Number"></asp:TextBox>
         </div>
         <div class="col-12">
             <input id="bt" type="button" value="Show"/>
@@ -111,32 +130,31 @@
     </asp:GridView>
         <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
     </form>
-   
-       
-<script>
-    function getAllEmployees() {
-        $.ajax({
-            url: 'userWebService1.asmx/getUsers',
-            dataType: "json",
-            method: 'GET',
-            success: function (data) {
-                var employeeTable = $('#employee tbody');
-                employeeTable.empty();
+        <div class="jumbotron">
+        <h1>Search Entry AJAX</h1>
+    </div>
+    
+       <div>
+           <input type="text" id="transid" placeholder="Enter TransactionID" />
+           <input type="button" id="search" value="Search" /> 
+           <br />
+           <br />
+            <table class="table"> 
+                <tr>
+                    <td>Account Number</td>
+                    <td><input type="text" id="accNum" /></td>
+                </tr>
+                <tr>
+                    <td>Bank Name</td>
+                    <td><input type="text" id="bName" /></td>
+                </tr>
+                <tr>
+                    <td>Login Date</td>
+                    <td><input type="text" id="LDate" /></td>
+                </tr>
+            </table>
+           <h1 id="h">hello brother</h1>
+       </div>
 
-                $(data).each(function (index, emp) {
-                    employeeTable.append('<tr><td>' + emp.ID + '</td><td>'
-                        + emp.Name + '</td><td>' + emp.Gender + '</td><td>'
-                        + emp.Phone + '</td><td>' + emp.Email + '</td><td>'
-                        + emp.Age + '</td><td>' + emp.Salary + '</td></tr>');
-                });
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    }  
-});
-
-</script>
 </body>
 </html>

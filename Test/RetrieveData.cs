@@ -7,7 +7,7 @@ namespace Test
 {
     public class RetrieveData
     {
-        public string ID{ get; set; }
+        public int Id{ get; set; }
         public string AccountNumber{ get; set; }
         public string BankName{ get; set; }
         public string Amount{ get; set; }
