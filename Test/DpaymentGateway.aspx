@@ -38,12 +38,25 @@
             })
         });
     });
+
 </script>  
-    
+<script src="particles.js" type="text/javascript">
+
+</script>
+    <style>
+    #particle-div {
+    margin: 0 auto;
+    width:800px;
+    height:100%;
+}
+    </style>
 </head>
 <body>
+    <div id="particle-div">
+        <button id="particle-button">Start</button>
     <form id="form1" runat="server">
         <div class="jumbotron">
+            
             <h1>Dummy Gateway</h1>           
         </div>
         <div class="container form-group row">
@@ -164,7 +177,7 @@
                 </tr>
             </table>
           </div>
-       </div>
+       <%--</div>--%>
         
     </div>
         <div class="row">
@@ -174,6 +187,6 @@
         </div>
         
     </form>
-        
+   </div>
 </body>
 </html>
